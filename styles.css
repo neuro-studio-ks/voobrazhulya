@@ -1,0 +1,479 @@
+/* Воображуля - детская парикмахерская
+   Палитра: крем #F7EDE2, глубокий фиолет #563E79, лаванда #E5DFFB,
+   тёмный фиолетовый #1B0E44, акцент кнопок #6A2BE9, звезда #FFCE80.
+   Шрифты: Dela Gothic One (заголовки, кириллица), Manrope (текст). */
+
+:root {
+  --cream: #F7EDE2;
+  --purple: #563E79;
+  --lavender: #E5DFFB;
+  --dark: #1B0E44;
+  --primary: #6A2BE9;
+  --star: #FFCE80;
+  --coral: #F5CAC3;
+  --pink: #F0A2FD;
+  --peach: #FEB591;
+  --font-display: 'Dela Gothic One', 'Manrope', sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --radius: 28px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--purple);
+  background: var(--cream);
+  font-size: 17px;
+  line-height: 1.55;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.25; }
+h1 { font-size: clamp(34px, 5.2vw, 58px); margin: 14px 0 20px; }
+h2 { font-size: clamp(26px, 3.6vw, 40px); margin: 12px 0 18px; }
+h3 { font-size: 19px; margin-bottom: 8px; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 800;
+}
+.section { padding: 72px 0; }
+.section--lavender { background: var(--lavender); }
+.section--dark { background: var(--dark); color: #EDE7FB; }
+.section--dark .eyebrow { color: var(--star); }
+.section__lead { max-width: 520px; margin-bottom: 28px; }
+
+/* ---------- Кнопки и ссылки ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+  background: var(--primary);
+  text-decoration: none;
+  padding: 15px 28px;
+  border: 2px solid var(--purple);
+  border-radius: 999px;
+  box-shadow: 5px 6px 0 var(--purple);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover { transform: translate(2px, 2px); box-shadow: 3px 4px 0 var(--purple); }
+.btn:active { transform: translate(5px, 6px); box-shadow: 0 0 0 var(--purple); }
+.btn--small { padding: 10px 20px; font-size: 14px; box-shadow: 3px 4px 0 var(--purple); }
+
+.link-arrow { font-weight: 800; text-decoration: none; position: relative; }
+.link-arrow::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--purple);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.link-arrow:hover::after { transform: scaleX(1); }
+
+/* ---------- Шапка ---------- */
+.header { padding: 18px 0; }
+.header__inner { display: flex; align-items: center; gap: 28px; }
+.logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-decoration: none;
+  line-height: 1.1;
+}
+.logo span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { text-decoration: none; font-weight: 700; font-size: 15px; position: relative; }
+.nav a::after {
+  content: "";
+  position: absolute; left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--purple);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav a:hover::after { transform: scaleX(1); }
+
+/* ---------- Герой ---------- */
+.hero { padding: 44px 0 56px; overflow: hidden; }
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero__sub { max-width: 420px; font-size: 18px; }
+.hero__actions { display: flex; align-items: center; gap: 26px; margin: 30px 0 24px; flex-wrap: wrap; }
+.hero__rating { display: flex; align-items: center; gap: 10px; font-size: 15px; flex-wrap: wrap; }
+.stars { color: var(--star); -webkit-text-stroke: 1px var(--purple); font-size: 19px; letter-spacing: 2px; }
+
+.hero__visual { position: relative; }
+.hero__photo {
+  border-radius: var(--radius);
+  border: 2px solid var(--purple);
+  box-shadow: 10px 12px 0 var(--lavender), 10px 12px 0 2px var(--purple);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Стикеры */
+.sticker {
+  position: absolute;
+  width: 84px; height: 84px;
+  background: #fff;
+  border: 2px solid var(--purple);
+  border-radius: 22px;
+  box-shadow: 4px 5px 0 rgba(86, 62, 121, 0.35);
+  display: grid;
+  place-items: center;
+  animation: float 5s ease-in-out infinite;
+}
+.sticker svg { width: 58px; height: 58px; }
+.sticker--car { top: -26px; left: -30px; transform: rotate(-8deg); }
+.sticker--star { top: -30px; right: 8%; transform: rotate(10deg); animation-delay: 1.2s; width: 70px; height: 70px; }
+.sticker--star svg { width: 46px; height: 46px; }
+.sticker--scissors { bottom: -24px; right: -22px; transform: rotate(6deg); animation-delay: 2.1s; }
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+/* ---------- Пилюли ---------- */
+.perks { padding: 8px 0 40px; }
+.perks__row { display: flex; flex-wrap: wrap; gap: 14px; }
+.pill {
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 2px solid var(--purple);
+  font-weight: 700;
+  font-size: 15px;
+}
+.pill--coral { background: var(--coral); }
+.pill--lavender { background: var(--lavender); }
+.pill--peach { background: var(--peach); }
+
+/* ---------- Цены ---------- */
+.price-list { list-style: none; margin: 6px 0 32px; max-width: 720px; }
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 2px dashed rgba(86, 62, 121, 0.35);
+}
+.price-row__name { font-weight: 800; font-size: 19px; }
+.price-row__dots { flex: 1; }
+.price-row__value { font-family: var(--font-display); font-size: 24px; white-space: nowrap; }
+
+/* ---------- Особенности ---------- */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 44px;
+  margin-top: 30px;
+  max-width: 900px;
+}
+.feature { border-top: 2px solid var(--purple); padding-top: 18px; }
+
+/* ---------- Галерея ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+.gallery__item {
+  background: #fff;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 6px 7px 0 rgba(86, 62, 121, 0.25);
+}
+.gallery__item--tilt { transform: rotate(1.4deg); }
+.gallery__item img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.gallery__item figcaption { padding: 16px 22px 20px; font-weight: 800; font-size: 17px; }
+.gallery__item figcaption span { display: block; font-weight: 500; font-size: 14px; margin-top: 2px; }
+.gallery__note { margin-top: 22px; font-size: 13px; opacity: 0.75; }
+
+/* ---------- Отзывы ---------- */
+.reviews__count { font-family: var(--font-body); font-weight: 600; font-size: 0.55em; }
+.review-card {
+  background: #2A1A57;
+  border: 2px solid var(--star);
+  border-radius: var(--radius);
+  padding: 30px 34px;
+  max-width: 640px;
+  margin-top: 26px;
+  transform: rotate(-1.2deg);
+  box-shadow: 8px 9px 0 rgba(255, 206, 128, 0.18);
+}
+.review-card__text { font-size: 21px; line-height: 1.5; font-weight: 600; }
+.review-card__author { margin-top: 14px; color: var(--star); font-size: 14px; }
+.reviews__more { margin-top: 24px; font-size: 14px; opacity: 0.8; }
+
+/* ---------- Запись ---------- */
+.booking { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.booking__form {
+  background: #fff;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: 6px 7px 0 rgba(86, 62, 121, 0.25);
+  display: grid;
+  gap: 16px;
+}
+.booking__form label { display: grid; gap: 6px; font-weight: 800; font-size: 14px; }
+.booking__form input,
+.booking__form select {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--purple);
+  padding: 12px 14px;
+  border: 2px solid var(--purple);
+  border-radius: 14px;
+  background: var(--cream);
+  width: 100%;
+}
+.booking__form input:focus,
+.booking__form select:focus { outline: 3px solid var(--lavender); }
+.booking__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.booking__form .btn { justify-self: start; margin-top: 6px; }
+.booking__hint { font-size: 13px; font-weight: 500; opacity: 0.75; }
+
+/* ---------- Контакты ---------- */
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.contacts__list { font-style: normal; display: grid; gap: 14px; font-size: 18px; }
+.contacts__list a { color: var(--star); }
+
+/* ---------- Подвал ---------- */
+.footer { padding: 26px 0; background: var(--dark); color: #EDE7FB; border-top: 1px solid rgba(237, 231, 251, 0.2); }
+.footer__small { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
+/* ---------- Появление при прокрутке ---------- */
+.reveal { opacity: 0; translate: 0 18px; transition: opacity 0.5s ease, translate 0.5s ease; }
+.reveal.is-visible { opacity: 1; translate: 0 0; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; translate: 0 0; transition: none; }
+  .sticker { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Мобильная версия ---------- */
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 56px; }
+  .hero__visual { margin: 0 26px; }
+  .booking, .contacts { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 640px) {
+  .nav { display: none; }
+  .header__inner { justify-content: space-between; }
+  .section { padding: 52px 0; }
+  .features, .gallery { grid-template-columns: 1fr; }
+  .gallery__item--tilt, .review-card { transform: none; }
+  .sticker { width: 62px; height: 62px; border-radius: 16px; }
+  .sticker svg { width: 42px; height: 42px; }
+  .sticker--car { left: -16px; }
+  .sticker--scissors { right: -14px; }
+  .booking__row { grid-template-columns: 1fr; }
+  .booking__form { padding: 22px; }
+}
+
+/* ---------- Мастоты с официального сайта ---------- */
+.hero__mascot {
+  position: absolute;
+  bottom: -34px;
+  left: -44px;
+  width: 150px;
+  transform: rotate(-6deg);
+  filter: drop-shadow(3px 4px 0 rgba(86, 62, 121, 0.2));
+}
+.booking__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.booking__mascot { width: 110px; flex-shrink: 0; }
+.price-note { max-width: 640px; margin: -12px 0 28px; font-size: 15px; }
+.contacts__note { font-size: 14px; opacity: 0.8; }
+.footer a { color: var(--star); }
+
+/* ---------- Шаги записи ---------- */
+.steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 26px 0 30px;
+}
+.steps__item {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--purple);
+  font-weight: 700;
+  font-size: 14px;
+  background: #fff;
+  opacity: 0.55;
+}
+.steps__item.is-active { opacity: 1; background: var(--purple); color: #fff; }
+.steps__item.is-done { opacity: 1; background: var(--star); }
+.wizard-step {
+  background: #fff;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius);
+  box-shadow: 6px 7px 0 rgba(86, 62, 121, 0.25);
+  padding: 28px;
+  max-width: 760px;
+}
+.wizard-label { display: grid; gap: 8px; font-weight: 800; font-size: 15px; margin-bottom: 24px; }
+.wizard-label select {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--purple);
+  padding: 12px 14px;
+  border: 2px solid var(--purple);
+  border-radius: 14px;
+  background: var(--cream);
+}
+.wizard-title { font-weight: 800; font-size: 18px; margin-bottom: 16px; }
+.wizard-note { font-size: 14px; margin: -8px 0 16px; opacity: 0.75; }
+
+/* Календарь */
+.calendar { max-width: 420px; }
+.calendar__nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.calendar__month { font-family: var(--font-display); font-size: 19px; }
+.calendar__arrow {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--purple);
+  background: var(--cream);
+  color: var(--purple);
+  font-size: 18px;
+  cursor: pointer;
+}
+.calendar__arrow:disabled { opacity: 0.3; cursor: default; }
+.calendar__weekdays, .calendar__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendar__weekdays { font-size: 12px; font-weight: 800; text-align: center; margin-bottom: 6px; opacity: 0.7; }
+.calendar__day {
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--purple);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+.calendar__day:hover:not(:disabled) { border-color: var(--purple); }
+.calendar__day:disabled { opacity: 0.25; cursor: default; background: none; }
+.calendar__day.is-selected { background: var(--primary); color: #fff; border-color: var(--purple); }
+.calendar__day.is-empty { background: none; cursor: default; }
+
+/* Мастера */
+.masters { display: grid; gap: 14px; }
+.master-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  padding: 18px 20px;
+  border: 2px solid var(--purple);
+  border-radius: 20px;
+  background: var(--cream);
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--purple);
+  transition: transform 0.15s ease;
+}
+.master-card:hover { transform: translateX(4px); background: var(--lavender); }
+.master-card__avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--purple);
+  background: var(--pink);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.master-card:nth-child(2) .master-card__avatar { background: var(--star); }
+.master-card:nth-child(3) .master-card__avatar { background: var(--coral); }
+.master-card__name { font-weight: 800; font-size: 18px; }
+.master-card__meta { font-size: 14px; margin-top: 2px; }
+
+/* Слоты времени */
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.slot {
+  padding: 12px 0;
+  text-align: center;
+  border: 2px solid var(--purple);
+  border-radius: 14px;
+  background: var(--cream);
+  color: var(--purple);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+.slot:hover:not(:disabled) { background: var(--lavender); }
+.slot.is-selected { background: var(--primary); color: #fff; }
+.slot:disabled { opacity: 0.3; cursor: default; text-decoration: line-through; }
+
+/* Шаг 4 */
+.booking-summary {
+  background: var(--cream);
+  border: 2px dashed var(--purple);
+  border-radius: 18px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.booking-summary strong { font-weight: 800; }
+.booking__form { box-shadow: none; border: none; padding: 0; background: none; }
+.consent { display: flex !important; gap: 12px; align-items: flex-start; font-weight: 500 !important; font-size: 13px !important; }
+.consent input { width: 20px !important; height: 20px; margin-top: 2px; flex-shrink: 0; accent-color: var(--primary); }
+.consent a { color: var(--primary); }
+.booking__send { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn--alt { background: var(--purple); }
+.btn--ghost { background: #fff; color: var(--purple); }
+
+/* После отправки */
+.booking-success {
+  background: #fff;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius);
+  box-shadow: 6px 7px 0 rgba(86, 62, 121, 0.25);
+  padding: 28px;
+  max-width: 760px;
+}
+.booking-success h3 { margin-bottom: 12px; }
+.booking-success p { margin-bottom: 12px; }
+#successDetails { font-weight: 700; background: var(--cream); border-radius: 14px; padding: 14px 18px; }
+
+@media (max-width: 640px) {
+  .wizard-step { padding: 20px; }
+  .hero__mascot { width: 104px; left: -18px; bottom: -26px; }
+  .booking__mascot { display: none; }
+  .steps__item { font-size: 12px; padding: 8px 12px; }
+}
+
+/* Кнопка «Отменить выбор» под шагами записи */
+.wizard-reset { margin: 0 0 18px; font-size: 14px; padding: 10px 20px; }
